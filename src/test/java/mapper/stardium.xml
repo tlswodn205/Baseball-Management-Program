@@ -17,12 +17,14 @@
 
 	<select id="findAll" resultType="site.metacoding.baseballManagementProgram.domain.stadium.Stadium">
 		SELECT *
-		FROM 
+		FROM stadium
 	</select>
 	
 	
 	<select id="findById" resultType="site.metacoding.baseballManagementProgram.domain.stadium.Stadium">
-	
+		SELECT *
+		FROM stadium
+		WHERE id = #{id}
 	</select>
 	
 </mapper>
