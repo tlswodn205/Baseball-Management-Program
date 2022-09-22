@@ -4,7 +4,8 @@
 <mapper namespace="site.metacoding.baseballManagementProgram.domain.outplayer.OutplayerDao">
 
 	<insert id="insert">
-		
+		INSERT INTO outplayer(reason, playerName, playerId, createAt)
+		VALUE(#{reason}, #{playerName}, #{playerId}, now())
 	</insert>
 	
 	
@@ -14,12 +15,15 @@
 	
 	
 	<select id="findAll" resultType="site.metacoding.baseballManagementProgram.domain.outplayer.Outplayer">
-		
+		SELECT *
+		FROM outplayer
 	</select>
 	
 	
 	<select id="findById" resultType="site.metacoding.baseballManagementProgram.domain.outplayer.Outplayer">
-		
+		SELECT *
+		FROM outplayer
+		WHERE id = #{id}
 	</select>
 	
 	

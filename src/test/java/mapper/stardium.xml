@@ -4,17 +4,20 @@
 <mapper namespace="site.metacoding.baseballManagementProgram.domain.stadium.StadiumDao">
 
 	<insert id="insert">
-	
+		INSERT INTO stadium(stadiumName, createAt)
+		VALUE (#stadiumName ,now())
 	</insert>
 
 	
 	<delete id="deleteById">
-	
+		DELETE FROM stadium
+		WHERE id = #{id}
 	</delete>
 
 
 	<select id="findAll" resultType="site.metacoding.baseballManagementProgram.domain.stadium.Stadium">
-	
+		SELECT *
+		FROM 
 	</select>
 	
 	

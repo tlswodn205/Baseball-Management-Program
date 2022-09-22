@@ -4,22 +4,27 @@
 <mapper namespace="site.metacoding.baseballManagementProgram.domain.team.TeamDao">
 
 	<insert id="insert">
-	
+		INSERT INTO team(teamName, stadiumId, createAt)
+		VALUE(#{teamName}, #{stadiumId}, now())
 	</insert>
 
 	
 	<delete id="deleteById">
-	
+		DELETE FROM team
+		WHERE id = #{id}
 	</delete>
 
 
 	<delete id = "deleteByStadiumId">
-	
+		DELETE FROM team
+		WHERE stadiumId = #{stadiumId}
 	</delete>
 	
 	
 	<update id="update">
-	
+		UPDATE team
+		SET teamName= #{teamName}, stadiumId = #{stadiumId}
+		WHERE id = #{id}
 	</update>
 	
 	

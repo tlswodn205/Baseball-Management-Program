@@ -13,4 +13,11 @@ public class Outplayer {
 	private String playerName;
 	private Integer playerId;
 	private Timestamp createAt;
+	
+	public Outplayer(String reason, String playerName, Integer playerId) {
+		super();
+		this.reason = reason;
+		this.playerName = playerName;
+		this.playerId = playerId;
+	}
 }

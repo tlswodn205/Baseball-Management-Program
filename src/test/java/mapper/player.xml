@@ -4,43 +4,50 @@
 <mapper namespace="site.metacoding.baseballManagementProgram.domain.player.PlayerDao">
 	
 	<insert id="insert" >
-	
+		INSERT INTO player(playerName, teamId, positions, createAt)
+		VALUE (#{playerName}, #{teamId}, #{positions}, now())
 	</insert>
 	
 	
 	<delete id="deleteById">
-		
+		DELETE FROM player
+		WHERE id = #{id}
 	</delete>
 	
 	
 	<delete id="deleteByTeamId">
-	
+		DELETE FROM player
+		WHERE teamId = #{teamId}
 	</delete>
 	
 	
 	<update id="update">
-		
+		Update player
+		SET positions = #{positions}
+		WHERE id = #{id}
 	</update>
 	
 	
-	<select id="findAll" resultType="">
-	
+	<select id="findAll" resultType="site.metacoding.baseballManagementProgram.domain.player.Player">
+		SELECT *
+		FROM Player
 	</select>
 	
 	
-	<select id="findById" resultType ="">
-	
+	<select id="findById" resultType="site.metacoding.baseballManagementProgram.domain.player.Player">
+		SELECT *
+		FROM Player
+		WHERE id = #{id}	
 	</select>
 	
 	
-	<select id="findByTeamId" resultType ="">
-	
+	<select id="findByTeamId" resultType="site.metacoding.baseballManagementProgram.domain.player.Player">
+		SELECT *
+		FROM Player
+		WHERE teamId = #{teamId}	
 	</select>
 	
-	
-	<select id="findByPositionAndTeamId" resultType ="">
-	
-	</select>
+
 	
 	
 </mapper>
