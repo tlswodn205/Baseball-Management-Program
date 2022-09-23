@@ -13,6 +13,12 @@
 		DELETE FROM stadium
 		WHERE id = #{id}
 	</delete>
+	
+	<update id="update">
+		UPDATE stadium
+		SET stadiumName= #{stadiumName}
+		WHERE id = #{id}
+	</update>
 
 
 	<select id="findAll" resultType="site.metacoding.baseballManagementProgram.domain.stadium.Stadium">

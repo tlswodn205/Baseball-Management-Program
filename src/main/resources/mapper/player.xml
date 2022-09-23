@@ -47,7 +47,4 @@
 		WHERE teamId = #{teamId}	
 	</select>
 	
-
-	
-	
 </mapper>

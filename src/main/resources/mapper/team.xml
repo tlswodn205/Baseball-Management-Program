@@ -29,12 +29,22 @@
 	
 	
 	<select id="findAll" resultType="site.metacoding.baseballManagementProgram.domain.team.Team">
-
+		SELECT *
+		FROM team
 	</select>
 	
 	
 	<select id="findById" resultType="site.metacoding.baseballManagementProgram.domain.team.Team">
-
+		SELECT *
+		FROM team
+		WHERE id = #{id}
+	</select>
+	
+	
+	<select id="findByStadiumId" resultType="site.metacoding.baseballManagementProgram.domain.team.Team">
+		SELECT *
+		FROM team
+		WHERE stadiumId = #{stadiumId}
 	</select>
 	
 </mapper>
