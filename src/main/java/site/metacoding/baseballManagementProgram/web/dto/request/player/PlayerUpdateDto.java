@@ -5,8 +5,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class JoinPlayerDto {
-	private String playerName;
-	private int teamId;
+public class PlayerUpdateDto {
+	private int id;
 	private String positions;
+	private String playerName;
 }

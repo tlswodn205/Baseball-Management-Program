@@ -20,6 +20,11 @@
 	</select>
 	
 	
+	<select id="findOutplayerList" resultType="site.metacoding.baseballManagementProgram.web.dto.response.outplayer.OutplayerListDto">
+		SELECT *, rank() OVER (ORDER BY id DESC)  rankId
+		FROM outplayer o
+	</select>
+	
 	<select id="findById" resultType="site.metacoding.baseballManagementProgram.domain.outplayer.Outplayer">
 		SELECT *
 		FROM outplayer

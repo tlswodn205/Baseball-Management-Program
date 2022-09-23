@@ -11,4 +11,5 @@ public class Stadium {
 	private Integer id;
 	private String stadiumName;
 	private Timestamp createAt;
+	private Integer rankId;
 }

@@ -23,16 +23,20 @@
 	
 	<update id="update">
 		UPDATE team
-		SET teamName= #{teamName}, stadiumId = #{stadiumId}
+		SET teamName= #{name}
 		WHERE id = #{id}
 	</update>
 	
 	
 	<select id="findAll" resultType="site.metacoding.baseballManagementProgram.domain.team.Team">
 		SELECT *
-		FROM team
+		FROM team 
 	</select>
 	
+	<select id="findTeamList" resultType="site.metacoding.baseballManagementProgram.web.dto.response.team.TeamListDto">
+		SELECT *, (SELECT stadiumName FROM stadium WHERE  id=t.stadiumId) stadiumName, rank() OVER (ORDER BY id ASC)  rankId
+		FROM team t
+	</select>
 	
 	<select id="findById" resultType="site.metacoding.baseballManagementProgram.domain.team.Team">
 		SELECT *

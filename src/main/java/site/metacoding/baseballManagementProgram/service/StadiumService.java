@@ -13,6 +13,7 @@ import site.metacoding.baseballManagementProgram.domain.stadium.StadiumDao;
 import site.metacoding.baseballManagementProgram.domain.team.Team;
 import site.metacoding.baseballManagementProgram.domain.team.TeamDao;
 import site.metacoding.baseballManagementProgram.web.dto.request.ChangeNameDto;
+import site.metacoding.baseballManagementProgram.web.dto.request.stadium.StadiumNameDto;
 
 @RequiredArgsConstructor
 @Service
@@ -24,21 +25,21 @@ public class StadiumService {
 	public final OutplayerDao outplayerDao;
 	
 	
-	public void 구장추가(String stadiumName) {
-		stadiumDao.insert(stadiumName);
+	public void 구장추가(StadiumNameDto stadiumNameDto) {
+		stadiumDao.insert(stadiumNameDto);
 	}
 	
 	public void 구장삭제(Integer id) {
-//		String reason = "구장 탈퇴로 인하여 팀해체됨.";
-//		Stadium stadium = stadiumDao.findById(id);
-//		Team team = teamDao.findByStadiumId(stadium.getId());
-//		List<Player> playerList = playerDao.findByTeamId(team.getId());
-//		for (Player player : playerList) {
-//			outplayerDao.insert(player.playerOut(reason));
-//		}
-//		playerDao.deleteByTeamId(team.getId());
-//		teamDao.deleteByStadiumId(stadium.getId());
-//		stadiumDao.deleteById(id);
+		String reason = "구장 탈퇴로 인하여 팀해체됨.";
+		Stadium stadium = stadiumDao.findById(id);
+		Team team = teamDao.findByStadiumId(stadium.getId());
+		List<Player> playerList = playerDao.findByTeamId(team.getId());
+		for (Player player : playerList) {
+			outplayerDao.insert(player.playerOut(reason));
+		}
+		playerDao.deleteByTeamId(team.getId());
+		teamDao.deleteByStadiumId(stadium.getId());
+		stadiumDao.deleteById(id);
 	}
 	
 	public void 구장이름변경(ChangeNameDto changeNameDto) {

@@ -10,9 +10,12 @@ import site.metacoding.baseballManagementProgram.domain.outplayer.OutplayerDao;
 import site.metacoding.baseballManagementProgram.domain.player.Player;
 import site.metacoding.baseballManagementProgram.domain.player.PlayerDao;
 import site.metacoding.baseballManagementProgram.web.dto.request.player.JoinPlayerDto;
+import site.metacoding.baseballManagementProgram.web.dto.request.player.PivotPlayerPosition;
+import site.metacoding.baseballManagementProgram.web.dto.request.player.PlayerUpdateDto;
+import site.metacoding.baseballManagementProgram.web.dto.response.player.playerListDto;
 
 @RequiredArgsConstructor
-//@Service
+@Service
 public class PlayerService {
 	
 	public final PlayerDao playerDao;
@@ -22,25 +25,39 @@ public class PlayerService {
 		playerDao.insert(joinPlayerDto);
 	}
 	
-	public void 선수삭제(int id, String reason) {
+	public void 선수삭제(Integer id, String reason) {
 		Player player = playerDao.findById(id);
 		playerDao.deleteById(id);
 		outPlayerDao.insert(player.playerOut(reason));
 	}
 	
-	public void 포지션변경(int id, String positions) {
-		Player player = playerDao.findById(id);
-		player.setPositions(positions);
-		playerDao.update(player);
+	public void 정보변경(PlayerUpdateDto playerUpdateDto) {
+		playerDao.update(playerUpdateDto);
 	}
 	
-	public List<Player> 모든선수목록보기(){
+	public List<Player> 모든선수보기(){
 		List<Player> playerList = playerDao.findAll();
 		return playerList;
 	}
 	
-	public List<Player> 팀선수목록(int teamId){
+	public Player 선수한건보기(Integer id) {
+		Player player = playerDao.findById(id);
+		return player;
+	}
+	
+	public List<Player> 팀선수목록(Integer teamId){
 		List<Player> playerList = playerDao.findByTeamId(teamId);
+		return playerList;
+	}
+	
+	public List<playerListDto> 선수목록보기(){
+		List<playerListDto> playerList = playerDao.findPlayerList();
+		return playerList;
+	}
+	
+	public List<PivotPlayerPosition> 포지션별선수보기() {
+		List<PivotPlayerPosition> playerList = playerDao.findPlayerPosition();
+		System.out.println(playerList.get(0).getTeamName());
 		return playerList;
 	}
 }

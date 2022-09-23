@@ -5,7 +5,7 @@
 
 	<insert id="insert">
 		INSERT INTO stadium(stadiumName, createAt)
-		VALUE (#stadiumName ,now())
+		VALUE (#{stadiumName} ,now())
 	</insert>
 
 	
@@ -16,13 +16,13 @@
 	
 	<update id="update">
 		UPDATE stadium
-		SET stadiumName= #{stadiumName}
+		SET stadiumName= #{name}
 		WHERE id = #{id}
 	</update>
 
 
 	<select id="findAll" resultType="site.metacoding.baseballManagementProgram.domain.stadium.Stadium">
-		SELECT *
+		SELECT *,  rank() OVER (ORDER BY id ASC)  rankId
 		FROM stadium
 	</select>
 	

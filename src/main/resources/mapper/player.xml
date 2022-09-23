@@ -23,7 +23,7 @@
 	
 	<update id="update">
 		Update player
-		SET positions = #{positions}
+		SET positions = #{positions}, playerName = #{playerName}
 		WHERE id = #{id}
 	</update>
 	
@@ -33,6 +33,10 @@
 		FROM Player
 	</select>
 	
+	<select id="findPlayerList" resultType="site.metacoding.baseballManagementProgram.web.dto.response.player.playerListDto">
+		SELECT *, (SELECT teamName FROM team WHERE  id=p.teamId) teamName, rank() OVER (ORDER BY id ASC)  rankId		
+		FROM Player p
+	</select>
 	
 	<select id="findById" resultType="site.metacoding.baseballManagementProgram.domain.player.Player">
 		SELECT *
@@ -45,6 +49,24 @@
 		SELECT *
 		FROM Player
 		WHERE teamId = #{teamId}	
+	</select>
+	
+	<select id="findPlayerPosition" resultType="site.metacoding.baseballManagementProgram.web.dto.request.player.PivotPlayerPosition">
+		SELECT t.teamname teamName, p.*
+		FROM
+		(
+		SELECT teamid,
+		MAX(if(positions = "1루수", playerName, null)) firstBasemane,  
+		MAX(if(positions = "2루수", playerName, null)) secondBasemane,
+		MAX(if(positions = "3루수", playerName, null)) thirdBasemane,
+		MAX(if(positions = "포수", playerName, null)) catcher,
+		MAX(if(positions = "좌익수", playerName, null)) leftFielder,
+		MAX(if(positions = "우익수", playerName, null)) rightFielder,
+		MAX(if(positions = "유격수", playerName, null)) shortstop
+		FROM player
+		GROUP BY teamId ASC
+		) p LEFT JOIN team t
+		ON p.teamid = t.id;
 	</select>
 	
 </mapper>

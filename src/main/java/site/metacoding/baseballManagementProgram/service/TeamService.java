@@ -12,8 +12,9 @@ import site.metacoding.baseballManagementProgram.domain.team.Team;
 import site.metacoding.baseballManagementProgram.domain.team.TeamDao;
 import site.metacoding.baseballManagementProgram.web.dto.request.ChangeNameDto;
 import site.metacoding.baseballManagementProgram.web.dto.request.team.JoinTeamDto;
+import site.metacoding.baseballManagementProgram.web.dto.response.team.TeamListDto;
 
-//@Service
+@Service
 @RequiredArgsConstructor
 public class TeamService {
 	
@@ -31,6 +32,7 @@ public class TeamService {
 		for (Player player : playerList) {
 			outplayerDao.insert(player.playerOut(reason));
 		}
+		playerDao.deleteByTeamId(id);
 		teamDao.deleteById(id);
 	}
 	
@@ -46,6 +48,11 @@ public class TeamService {
 	public Team 팀한건보기(Integer id) {
 		Team team = teamDao.findById(id);
 		return team;
+	}
+	
+	public List<TeamListDto> 팀목록보기(){
+		List<TeamListDto> teamList = teamDao.findTeamList();
+		return teamList;
 	}
 	
 }
