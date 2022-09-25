@@ -33,11 +33,13 @@ public class StadiumService {
 		String reason = "구장 탈퇴로 인하여 팀해체됨.";
 		Stadium stadium = stadiumDao.findById(id);
 		Team team = teamDao.findByStadiumId(stadium.getId());
-		List<Player> playerList = playerDao.findByTeamId(team.getId());
-		for (Player player : playerList) {
-			outplayerDao.insert(player.playerOut(reason));
+		if(!(team == null)) {
+			List<Player> playerList = playerDao.findByTeamId(team.getId());
+			for (Player player : playerList) {
+				outplayerDao.insert(player.playerOut(reason));
+			}
+			playerDao.deleteByTeamId(team.getId());
 		}
-		playerDao.deleteByTeamId(team.getId());
 		teamDao.deleteByStadiumId(stadium.getId());
 		stadiumDao.deleteById(id);
 	}

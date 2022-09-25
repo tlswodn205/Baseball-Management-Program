@@ -26,7 +26,7 @@ public class StadiumController {
 	
 	public final StadiumService stadiumService;
 	
-	@GetMapping("/stadiumList")
+	@GetMapping({"/", "/stadiumList"})
 	public String getStadiumList(Model model) {
 		List<Stadium> stadiumList = stadiumService.구장모두보기();
 		model.addAttribute("stadiumList", stadiumList);
@@ -40,6 +40,7 @@ public class StadiumController {
 	
 	@PostMapping("/stadiumSave")
 	public @ResponseBody CMRespDto<?> stadiumSave(@RequestBody StadiumNameDto stadiumNameDto){
+		stadiumNameDto.getStadiumName();
 		stadiumService.구장추가(stadiumNameDto);
 		return new CMRespDto<>(1, "구장추가 완료", null);
 	}

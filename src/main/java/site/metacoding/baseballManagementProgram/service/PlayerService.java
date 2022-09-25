@@ -12,6 +12,7 @@ import site.metacoding.baseballManagementProgram.domain.player.PlayerDao;
 import site.metacoding.baseballManagementProgram.web.dto.request.player.JoinPlayerDto;
 import site.metacoding.baseballManagementProgram.web.dto.request.player.PivotPlayerPosition;
 import site.metacoding.baseballManagementProgram.web.dto.request.player.PlayerUpdateDto;
+import site.metacoding.baseballManagementProgram.web.dto.response.player.DeleteCheckedPlayerDto;
 import site.metacoding.baseballManagementProgram.web.dto.response.player.playerListDto;
 
 @RequiredArgsConstructor
@@ -59,5 +60,15 @@ public class PlayerService {
 		List<PivotPlayerPosition> playerList = playerDao.findPlayerPosition();
 		System.out.println(playerList.get(0).getTeamName());
 		return playerList;
+	}
+	
+	public void 선수동시삭제(DeleteCheckedPlayerDto deleteCheckedPlayerDto) {
+		Integer[] ids =deleteCheckedPlayerDto.getIds();
+		String reason = "단체퇴출";
+		for (Integer id : ids) {
+			Player player = playerDao.findById(id);
+			outPlayerDao.insert(player.playerOut(reason));
+			playerDao.deleteById(id);
+		}
 	}
 }

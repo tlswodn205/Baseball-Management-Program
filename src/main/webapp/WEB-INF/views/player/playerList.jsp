@@ -26,7 +26,7 @@
 					<td>${player.teamName}</td>
 					<td>${player.createAt}</td>
 					<td><a href="/player/${player.id}/update"><i id="playerNameUpdate" class="fa-solid fa-wrench"></i></a></td>
-					<td><input name="checkPlayer" type="checkbox" value="${player.id}"></td>
+        			<td><input onclick="getDeleteId(${player.id})" name="id" type="checkbox" class="form-check-input" value="${player.id}" ></td>
 				</tr>
 			</c:forEach>
 		</tbody>

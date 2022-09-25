@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,6 +24,7 @@ import site.metacoding.baseballManagementProgram.web.dto.request.player.PivotPla
 import site.metacoding.baseballManagementProgram.web.dto.request.player.PlayerUpdateDto;
 import site.metacoding.baseballManagementProgram.web.dto.request.team.JoinTeamDto;
 import site.metacoding.baseballManagementProgram.web.dto.response.CMRespDto;
+import site.metacoding.baseballManagementProgram.web.dto.response.player.DeleteCheckedPlayerDto;
 import site.metacoding.baseballManagementProgram.web.dto.response.player.playerListDto;
 import site.metacoding.baseballManagementProgram.web.dto.response.team.TeamListDto;
 
@@ -73,4 +75,9 @@ public class PlayerController {
 		return "player/playerPositionList";
 	}
 	
+	@DeleteMapping("/player/delete")
+	public @ResponseBody CMRespDto<?> delete(@RequestBody DeleteCheckedPlayerDto deleteCheckedPlayerDto) {
+		playerService.선수동시삭제(deleteCheckedPlayerDto);
+		return new CMRespDto<>(1, "선수 삭제 완료", null);
+	}
 }

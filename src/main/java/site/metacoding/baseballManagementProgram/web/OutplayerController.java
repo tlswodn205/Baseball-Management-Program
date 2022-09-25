@@ -37,7 +37,7 @@ public class OutplayerController {
 	@PostMapping("/outplayer/insert")
 	public @ResponseBody CMRespDto<?> playerOut(@RequestBody OutplayerReqDto outplayerReqDto){
 		outplayerService.선수퇴출(outplayerReqDto);
-		return new CMRespDto<>(1, "선수 퇴출 성공", null);
+		return new CMRespDto<>(1, "선수퇴출성공", null);
 	}
 	
 	@GetMapping("/outplayerList")
