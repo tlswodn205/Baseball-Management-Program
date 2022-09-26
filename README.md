@@ -40,9 +40,13 @@ INSERT INTO stadium(stadiumName, createAt) VALUE ("코핀" ,now());
 INSERT INTO stadium(stadiumName, createAt) VALUE ("알파트릭스" ,now());
 
 
+
+
 INSERT INTO team(teamName, stadiumId, createAt) VALUE("펜릴", 1, now());
 
 INSERT INTO team(teamName, stadiumId, createAt) VALUE("알파트릭스엔터테이먼트", 2, NOW());
+
+
 
 
 INSERT INTO player(playerName, teamId, positions, createAt)	VALUE ("힐데", 1, "1루수", NOW());
@@ -58,6 +62,8 @@ INSERT INTO player(playerName, teamId, positions, createAt)	VALUE ("김하나", 
 INSERT INTO player(playerName, teamId, positions, createAt)	VALUE ("레나", 1, "우익수", NOW());
 
 INSERT INTO player(playerName, teamId, positions, createAt)	VALUE ("클로에", 1, "유격수", NOW());
+
+
 
 
 INSERT INTO player(playerName, teamId, positions, createAt)	VALUE ("신지아", 2, "1루수", NOW());
