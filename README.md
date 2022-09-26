@@ -1,6 +1,7 @@
 # Baseball-Management-Program
 
-마리아DB 테이블
+
+### 마리아DB 테이블
 
 CREATE TABLE stadium(
    id INT auto_increment primary key,
@@ -32,7 +33,7 @@ CREATE TABLE outplayer(
    createAt timestamp
 );
 
-데이터!
+### 데이터!
 
 INSERT INTO stadium(stadiumName, createAt) VALUE ("코핀" ,now());
 INSERT INTO stadium(stadiumName, createAt) VALUE ("알파트릭스" ,now());
