@@ -36,23 +36,38 @@ CREATE TABLE outplayer(
 ### 데이터!
 
 INSERT INTO stadium(stadiumName, createAt) VALUE ("코핀" ,now());
+
 INSERT INTO stadium(stadiumName, createAt) VALUE ("알파트릭스" ,now());
 
+
 INSERT INTO team(teamName, stadiumId, createAt) VALUE("펜릴", 1, now());
+
 INSERT INTO team(teamName, stadiumId, createAt) VALUE("알파트릭스엔터테이먼트", 2, NOW());
 
+
 INSERT INTO player(playerName, teamId, positions, createAt)	VALUE ("힐데", 1, "1루수", NOW());
+
 INSERT INTO player(playerName, teamId, positions, createAt)	VALUE ("유미나", 1, "2루수", NOW());
+
 INSERT INTO player(playerName, teamId, positions, createAt)	VALUE ("주시윤", 1, "3루수", NOW());
+
 INSERT INTO player(playerName, teamId, positions, createAt)	VALUE ("이수연", 1, "포수", NOW());
+
 INSERT INTO player(playerName, teamId, positions, createAt)	VALUE ("김하나", 1, "좌익수", NOW());
+
 INSERT INTO player(playerName, teamId, positions, createAt)	VALUE ("레나", 1, "우익수", NOW());
+
 INSERT INTO player(playerName, teamId, positions, createAt)	VALUE ("클로에", 1, "유격수", NOW());
 
 
 INSERT INTO player(playerName, teamId, positions, createAt)	VALUE ("신지아", 2, "1루수", NOW());
+
 INSERT INTO player(playerName, teamId, positions, createAt)	VALUE ("이진", 2, "2루수", NOW());
+
 INSERT INTO player(playerName, teamId, positions, createAt)	VALUE ("김초원", 2, "3루수", NOW());
+
 INSERT INTO player(playerName, teamId, positions, createAt)	VALUE ("오새롬", 2, "포수", NOW());
+
 INSERT INTO player(playerName, teamId, positions, createAt)	VALUE ("가브리엘", 2, "좌익수", NOW());
+
 INSERT INTO player(playerName, teamId, positions, createAt)	VALUE ("라파엘라", 2, "우익수", NOW());
